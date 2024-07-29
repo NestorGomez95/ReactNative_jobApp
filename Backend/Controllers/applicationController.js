@@ -1,15 +1,7 @@
-// server.js
-const express = require('express');
-const bodyParser = require('body-parser');
-const Jobapplication = require('./models/Jobapplication');
-const JobApplication = require(Jobapplication); // Importa el modelo
+// controllers/applicationController.js
+const JobApplication = require('./models/JobApplication'); // Importa el modelo
 
-const app = express();
-
-app.use(bodyParser.json()); // Middleware para parsear JSON
-
-// Ruta para manejar solicitudes POST del formulario de contacto
-app.post('/jobs/apply', async (req, res) => {
+exports.applyForJob = async (req, res) => {
   try {
     const { jobTitle, name, email, address, phoneNumber, availableHours } = req.body;
     const newApplication = new JobApplication({
@@ -25,6 +17,4 @@ app.post('/jobs/apply', async (req, res) => {
   } catch (error) {
     res.status(500).send({ message: 'Failed to submit application.', error });
   }
-});
-
-module.exports = app;
+};

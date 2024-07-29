@@ -1,14 +1,29 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
+import axios from 'axios';
 
 const ContactForm = () => {
   const { title } = useLocalSearchParams();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [availableHours, setAvailableHours] = useState('');
 
   const handleSubmit = () => {
-    console.log(`Application for ${title}: ${name}, ${email}`);
+    axios.post('http://localhost:3000/jobs/apply', {
+      jobTitle: title, // Nombre del trabajo al que se aplica
+      name,
+      email,
+      address,
+      phoneNumber,
+      availableHours,
+    }).then(response => {
+      alert('Application submitted successfully!');
+    }).catch(error => {
+      alert('Failed to submit application.');
+    });
   };
 
   return (
@@ -25,6 +40,25 @@ const ContactForm = () => {
         placeholder="Email"
         value={email}
         onChangeText={setEmail}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Address"
+        value={address}
+        onChangeText={setAddress}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Phone Number"
+        value={phoneNumber}
+        onChangeText={setPhoneNumber}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Available Hours per Week"
+        value={availableHours}
+        onChangeText={setAvailableHours}
+        keyboardType="numeric"
       />
       <Button title="Submit" onPress={handleSubmit} />
     </View>
