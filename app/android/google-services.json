@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "899545680072",
+    "project_id": "allianceapp-fb4c4",
+    "storage_bucket": "allianceapp-fb4c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899545680072:android:2a4bf95a24b8247e35fdfd",
+        "android_client_info": {
+          "package_name": "com.neragoro.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgwTmTYjakYQk5H9Nk26Bp7BWiVrQrpl0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

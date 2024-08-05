@@ -1,39 +1,31 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Link } from 'expo-router';
+import { View, Text, Image } from 'react-native';
+import AdminLogin from '../components/adminlogin'; 
+import styles from '../styles/styles_index';
 
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
-      <Link href="/explore">
-        <Text style={styles.link}>Bienvenue à Alliance</Text> 
-      </Link>
-      <Text style={styles.text}>Avec cette application, il sera plus facile de nous rejoindre.</Text>
-      <Text style={styles.text}>Consultez tous les postes disponibles et postulez dès maintenant !</Text>
+      <View style={styles.header}>
+        <Text style={styles.title}>Alliance App</Text>
+        <Image source={require('../../images/alliance_logo.png')} style={styles.logo} />
+      </View>
+      <Text style={styles.link}>Bienvenue à Alliance</Text>
+      <Text style={styles.text}>
+        Avec cette application, il sera plus facile de nous rejoindre.
+      </Text>
+      <Text style={styles.text}>
+        Consultez tous les postes disponibles et postulez dès maintenant !
+      </Text>
+      <View>
+        <Text>Adresse : 3308 AV Francis-Hughes Laval, QC H7L 5A7</Text>
+        <Text>Email: info@personnelalliance.com</Text>
+        <Text>Téléphone: (514) 375-9908</Text>
+      </View>
+      <AdminLogin />
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-    backgroundColor: '#d6eaf8 ', 
-  },
-  link: {
-    fontSize: 24,
-    color: '#FF0000', // Texto en rojo
-    fontWeight: 'bold',
-  },
-  text: {
-    marginTop: 10, // Espacio entre líneas de texto
-    fontSize: 16,
-    color: 'black',
-    fontWeight: 'bold',
-    textAlign: 'center', // Para centrar el texto
-  },
-});
-
 export default HomeScreen;
+

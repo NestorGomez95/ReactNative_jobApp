@@ -1,14 +1,12 @@
-// server.js
-const express = require('express');
-const bodyParser = require('body-parser');
-const Jobapplication = require('./models/Jobapplication');
-const JobApplication = require(Jobapplication); // Importa el modelo
 
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const JobApplication = require('./models/JobApplication'); 
 const app = express();
 
-app.use(bodyParser.json()); // Middleware para parsear JSON
+app.use(bodyParser.json());
 
-// Ruta para manejar solicitudes POST del formulario de contacto
 app.post('/jobs/apply', async (req, res) => {
   try {
     const { jobTitle, name, email, address, phoneNumber, availableHours } = req.body;
@@ -27,4 +25,7 @@ app.post('/jobs/apply', async (req, res) => {
   }
 });
 
-module.exports = app;
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
