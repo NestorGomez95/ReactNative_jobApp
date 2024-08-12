@@ -1,31 +1,32 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const JobApplication = require('./models/JobApplication'); 
+const dotenv = require('dotenv');
+const jobRoutes = require('./Routes/JobRoutes');
+
+// Configurar dotenv para cargar las variables de entorno desde el archivo .env
+dotenv.config();
+
+console.log("MONGO_URI:", process.env.MONGO_URI); // Verificar que la URI de MongoDB esté cargándose
+
 const app = express();
+const port = process.env.PORT || 3000;
 
-app.use(bodyParser.json());
+// Middleware para parsear JSON
+app.use(express.json());
 
-app.post('/jobs/apply', async (req, res) => {
-  try {
-    const { jobTitle, name, email, address, phoneNumber, availableHours } = req.body;
-    const newApplication = new JobApplication({
-      jobTitle,
-      name,
-      email,
-      address,
-      phoneNumber,
-      availableHours,
-    });
-    await newApplication.save();
-    res.status(200).send({ message: 'Application submitted successfully!' });
-  } catch (error) {
-    res.status(500).send({ message: 'Failed to submit application.', error });
-  }
-});
+// Rutas
+app.use('/api/jobs', jobRoutes);
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+// Conectar a MongoDB
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => console.log('Conectado a MongoDB'))
+.catch((err) => console.error('Error al conectar a MongoDB:', err));
+
+// Iniciar el servidor
+app.listen(port, () => {
+    console.log(`Servidor corriendo en el puerto ${port}`);
 });

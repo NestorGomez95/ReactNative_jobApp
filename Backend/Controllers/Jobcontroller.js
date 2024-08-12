@@ -1,18 +1,24 @@
-// controllers/jobController.js
 const Job = require('../models/Job');
 
-exports.getAllJobs = async (req, res) => {
-  const jobs = await Job.find();
-  res.json(jobs);
+// Agregar un nuevo empleo
+exports.addJob = async (req, res) => {
+  const { title, description, company } = req.body;
+  try {
+    const newJob = new Job({ title, description, company });
+    await newJob.save();
+    res.status(201).json(newJob);
+  } catch (error) {
+    res.status(500).json({ message: 'Error adding job', error });
+  }
 };
 
-exports.createJob = async (req, res) => {
-  const job = new Job(req.body);
-  await job.save();
-  res.status(201).send(job);
-};
-
+// Eliminar un empleo
 exports.deleteJob = async (req, res) => {
-  await Job.findByIdAndDelete(req.params.id);
-  res.status(204).send();
+  const { id } = req.params;
+  try {
+    await Job.findByIdAndDelete(id);
+    res.status(200).json({ message: 'Job deleted' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error deleting job', error });
+  }
 };

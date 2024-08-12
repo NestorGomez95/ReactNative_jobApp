@@ -1,12 +1,11 @@
-// models/Job.js
 const mongoose = require('mongoose');
 
 const jobSchema = new mongoose.Schema({
-  title: String,
-  location: String,
-  salary: String,
-  description: String,
-  tags: [String]
+  title: { type: String, required: true },
+  description: { type: String, required: true },
+  company: { type: String, required: true }
 });
 
-module.exports = mongoose.model('Job', jobSchema);
+const Job = mongoose.model('Job', jobSchema);
+
+module.exports = Job;
