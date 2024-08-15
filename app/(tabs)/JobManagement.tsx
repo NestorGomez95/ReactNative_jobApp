@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, Button, Alert } from 'react-native';
 import { useAuth } from '@/app/context/AuthContext'; 
 import { useRouter } from 'expo-router';
-
 
 const JobManagement = () => {
   const { isAuthenticated } = useAuth();
   const router = useRouter();
 
+  useEffect(() => {
+    if (!isAuthenticated) {
+      Alert.alert('Access denied', 'You have to login as an admin to access this page.');
+      router.replace('/(tabs)/explore'); 
+    }
+  }, [isAuthenticated, router]);
+
   if (!isAuthenticated) {
-    Alert.alert('Access denied', 'You have to login as an admin to access this page.');
-    router.replace('/(tabs)/explore'); 
     return null; 
   }
 

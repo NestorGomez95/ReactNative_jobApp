@@ -12,7 +12,7 @@ const DeleteJob = () => {
 
   const fetchJobs = async () => {
     try {
-      const response = await fetch('https://yourapi.com/jobs');
+      const response = await fetch('http://localhost:3000/api/jobs/delete');
       const data = await response.json();
       setJobs(data);
     } catch (error) {
@@ -22,11 +22,11 @@ const DeleteJob = () => {
 
   const handleDeleteJob = async (jobId: string) => {
     try {
-      await fetch(`https://yourapi.com/jobs/${jobId}`, {
+      await fetch(`http://localhost:3000/api/jobs/delete/${jobId}`, {
         method: 'DELETE',
       });
       Alert.alert('Job Deleted', 'The job has been deleted successfully.');
-      fetchJobs(); // Refresh the job list after deletion
+      fetchJobs();
     } catch (error) {
       console.error('Error deleting job:', error);
     }

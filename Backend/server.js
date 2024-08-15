@@ -2,18 +2,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const jobRoutes = require('./Routes/JobRoutes');
+const jobRoutes = require('./Routes/JobRoutes'); // Asegúrate de que la ruta sea correcta
+const cors = require('cors');
 
-// Configurar dotenv para cargar las variables de entorno desde el archivo .env
 dotenv.config();
-
-console.log("MONGO_URI:", process.env.MONGO_URI); // Verificar que la URI de MongoDB esté cargándose
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware para parsear JSON
 app.use(express.json());
+app.use(cors());
 
 // Rutas
 app.use('/api/jobs', jobRoutes);
@@ -25,6 +23,12 @@ mongoose.connect(process.env.MONGO_URI, {
 })
 .then(() => console.log('Conectado a MongoDB'))
 .catch((err) => console.error('Error al conectar a MongoDB:', err));
+
+// Middleware de manejo de errores
+app.use((err, req, res, next) => {
+  console.error('Error:', err);
+  res.status(500).json({ message: 'Internal Server Error', error: err.message });
+});
 
 // Iniciar el servidor
 app.listen(port, () => {

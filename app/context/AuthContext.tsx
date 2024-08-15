@@ -17,14 +17,21 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       await firebase.auth().signInWithEmailAndPassword(email, password);
       setIsAuthenticated(true);
     } catch (error) {
+      console.error('Sign in error:', error);
       throw new Error('Invalid credentials');
     }
   };
 
   const logout = async () => {
-    await firebase.auth().signOut();
-    setIsAuthenticated(false);
+    try {
+      await firebase.auth().signOut();
+      setIsAuthenticated(false);
+    } catch (error) {
+      console.error('Sign out error:', error);
+    }
   };
+
+  console.log('AuthProvider rendered');
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, signIn, logout }}>
@@ -38,5 +45,6 @@ export const useAuth = () => {
   if (!context) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
+  console.log('useAuth context:', context);
   return context;
 };

@@ -14,7 +14,7 @@ const JobForm = () => {
   const [requirements, setRequirements] = useState('');
   const [benefits, setBenefits] = useState('');
   const router = useRouter();
-  const { id } = useLocalSearchParams(); // Using useLocalSearchParams to get the job ID
+  const { id } = useLocalSearchParams(); 
 
   useEffect(() => {
     if (id) {
@@ -50,7 +50,7 @@ const JobForm = () => {
 
   const addNewJob = async () => {
     try {
-      await fetch('https://yourapi.com/jobs', {
+      await fetch('http://localhost:3000/api/jobs/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const JobForm = () => {
 
   const updateJob = async (jobId: string) => {
     try {
-      await fetch(`https://yourapi.com/jobs/${jobId}`, {
+      await fetch(`http://localhost:3000/api/jobs/${jobId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
