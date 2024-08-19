@@ -5,11 +5,16 @@ export default StyleSheet.create({
     flex: 1,
     padding: 16,
     backgroundColor: '#f5f5f5',
+    paddingTop: 120,
+  },
+  scrollContentContainer: {
+    flexGrow: 1,
+    paddingBottom: 20, 
   },
   contentContainer: {
-    flex: 1,
-    alignItems: 'center',  // Centrar el contenido dentro del contenedor
+    alignItems: 'center',
     justifyContent: 'center',
+    paddingBottom: 20,
   },
   title: {
     fontSize: 24,
@@ -21,6 +26,15 @@ export default StyleSheet.create({
     fontSize: 16,
     color: '#666',
     marginBottom: 8,
+    textAlign: 'justify',
+    marginHorizontal: 16,
+  },
+  descriptionText: {  // Aquí está el estilo que faltaba
+    fontSize: 16,
+    color: '#666',
+    marginBottom: 8,
+    textAlign: 'justify',
+    marginHorizontal: 16,
   },
   jobTitle: {
     fontSize: 18,
@@ -35,6 +49,7 @@ export default StyleSheet.create({
     backgroundColor: '#ffffff',
     borderRadius: 8,
     marginBottom: 10,
+    marginTop: 20, 
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -59,10 +74,23 @@ export default StyleSheet.create({
     position: 'absolute',
     top: 10,
     right: 10,
+    marginTop: 10,
+    marginVertical: 10,
+    paddingTop: 30,
+  },
+  logo1: {
+    width: 120,
+    height: 60,
+    resizeMode: 'contain',
+    paddingTop: 30,
+    marginTop: 50,
+    marginVertical: 10,
+
   },
   logo: {
     width: 120,
     height: 60,
     resizeMode: 'contain',
+    
   },
 });

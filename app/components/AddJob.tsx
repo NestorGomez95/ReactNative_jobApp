@@ -50,7 +50,7 @@ const JobForm = () => {
 
   const addNewJob = async () => {
     try {
-      await fetch('http://localhost:3000/api/jobs/add', {
+      await fetch('http://10.0.2.2:3000/api/jobs/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ const JobForm = () => {
           benefits,
         }),
       });
-      Alert.alert('Trabajo añadido', 'El perfil del trabajo se ha añadido exitosamente.');
+      Alert.alert('Le travail a été ajouté avec succès !');
       router.replace('/');
     } catch (error) {
       console.error('Error adding job:', error);
@@ -76,7 +76,7 @@ const JobForm = () => {
 
   const updateJob = async (jobId: string) => {
     try {
-      await fetch(`http://localhost:3000/api/jobs/${jobId}`, {
+      await fetch(`http://10.0.2.2:3000/api/jobs/${jobId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ const JobForm = () => {
           benefits,
         }),
       });
-      Alert.alert('Trabajo actualizado', 'El perfil del trabajo se ha actualizado exitosamente.');
+      Alert.alert('Le travail a été mis à jour avec succès !');
       router.replace('/');
     } catch (error) {
       console.error('Error updating job:', error);

@@ -24,7 +24,7 @@ const Explore: React.FC = () => {
 
   const fetchJobs = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/jobs/jobs');
+      const response = await fetch('http://10.0.2.2:3000/api/jobs/jobs');
       const data: Job[] = await response.json();
       setJobs(data);
     } catch (error) {
@@ -40,25 +40,29 @@ const Explore: React.FC = () => {
 
   if (selectedJob) {
     return (
-      <ScrollView style={styles.container}>
-        <View style={styles.contentContainer}> {/* Contenedor de contenido con flexbox */}
-          <Image source={require('../../images/alliance_logo.png')} style={styles.logo} />
+      <ScrollView contentContainerStyle={styles.scrollContentContainer}>
+        <View style={styles.contentContainer}> 
+          <Image source={require('../../images/alliance_logo.png')} style={styles.logo1} />
           <Text style={styles.title}>{selectedJob.position}</Text>
           <Text style={styles.details}>Location: {selectedJob.location}</Text>
           <Text style={styles.details}>Hours: {selectedJob.hours}</Text>
           <Text style={styles.details}>Salary: {selectedJob.salary}</Text>
           <Text style={styles.details}>Job Type: {selectedJob.jobType}</Text>
-          <Text style={styles.details}>Description: {selectedJob.jobDescription}</Text>
-          <Text style={styles.details}>Key Responsibilities: {selectedJob.keyResponsibilities}</Text>
-          <Text style={styles.details}>Requirements: {selectedJob.requirements}</Text>
-          <Text style={styles.details}>Benefits: {selectedJob.benefits}</Text>
+          <Text style={styles.descriptionText}>Description: {selectedJob.jobDescription}</Text>
+          <Text style={styles.descriptionText}>Key Responsibilities: {selectedJob.keyResponsibilities}</Text>
+          <Text style={styles.descriptionText}>Requirements: {selectedJob.requirements}</Text>
+          <Text style={styles.descriptionText}>Benefits: {selectedJob.benefits}</Text>
+
+          
+          <Button title="Retourner" onPress={() => setSelectedJob(null)} />
+
           <TouchableOpacity
             style={styles.button}
             onPress={() =>
               router.push(`/ContactForm?title=${selectedJob.position}&location=${selectedJob.location}`)
             }
           >
-            <Text style={styles.buttonText}>Apply</Text>
+            <Text style={styles.buttonText}>Envoyer</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

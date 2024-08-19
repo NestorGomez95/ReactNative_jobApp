@@ -15,17 +15,17 @@ const AdminLogin = () => {
       setVisible(false);
       // Aquí puedes manejar la navegación o cualquier otra acción posterior al login
     } catch (error) {
-      Alert.alert('Error', 'Credenciales inválidas. Por favor, verifica tus datos e intenta de nuevo.');
+      Alert.alert('Erreur, identifiants incorrects, veuillez réessayer !');
     }
   };
 
   return (
     <View>
-      <Button title="Admin Login" onPress={() => setVisible(true)} />
+      <Button title="Connexion administrateur" onPress={() => setVisible(true)} />
       <Modal visible={visible} onRequestClose={() => setVisible(false)}>
         <View style={styles.modalContainer}>
           <TextInput
-            placeholder="Email"
+            placeholder="courriel"
             value={email}
             onChangeText={setEmail}
             style={styles.input}

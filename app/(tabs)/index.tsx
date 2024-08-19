@@ -31,7 +31,7 @@ const HomeScreen = () => {
         <Text>Téléphone: (514) 375-9908</Text>
       </View>
       <AdminLogin />
-      <Button title="Go to Job Management" onPress={handleNavigateToJobManagement} />
+      <Button title="Accéder à la gestion des emplois" onPress={handleNavigateToJobManagement} />
     </View>
   );
 };

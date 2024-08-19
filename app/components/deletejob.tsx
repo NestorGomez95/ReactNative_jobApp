@@ -12,7 +12,7 @@ const DeleteJob = () => {
 
   const fetchJobs = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/jobs/jobs');
+      const response = await fetch('http://10.0.2.2:3000/api/jobs/jobs');
       const data = await response.json();
       setJobs(data);
     } catch (error) {
@@ -22,11 +22,11 @@ const DeleteJob = () => {
 
   const handleDeleteJob = async (jobId: string) => {
     try {
-      await fetch(`http://localhost:3000/api/jobs/delete/${jobId}`, {
+      await fetch(`http://10.0.2.2:3000/api/jobs/delete/${jobId}`, {
         method: 'DELETE',
       });
-      Alert.alert('Job Deleted', 'The job has been deleted successfully.');
-      fetchJobs(); // Vuelve a cargar los empleos después de eliminar
+      Alert.alert('L emploi a été supprimé avec succès !');
+      fetchJobs();
     } catch (error) {
       console.error('Error deleting job:', error);
     }
@@ -35,7 +35,7 @@ const DeleteJob = () => {
   const renderJob = ({ item }: { item: any }) => (
     <View style={styles.jobContainer}>
       <Text style={styles.jobText}>{item.position} - {item.location}</Text>
-      <Button title="Delete" onPress={() => handleDeleteJob(item._id)} />
+      <Button title="Supprimer" onPress={() => handleDeleteJob(item._id)} />
     </View>
   );
 
@@ -47,7 +47,7 @@ const DeleteJob = () => {
         keyExtractor={(item) => item._id.toString()}
         contentContainerStyle={styles.flatListContainer} // Centrar el contenido del FlatList
       />
-      <Button title="Back" onPress={() => router.push('/')} />
+      <Button title="retourner" onPress={() => router.push('/')} />
     </View>
   );
 };

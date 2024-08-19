@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import axios from 'axios';
 
 const ContactForm = () => {
   const { title } = useLocalSearchParams();
+  const router = useRouter(); 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
@@ -13,7 +14,7 @@ const ContactForm = () => {
 
   const handleSubmit = () => {
     axios.post('http://localhost:3000/jobs/apply', {
-      jobTitle: title, // Nombre del trabajo al que se aplica
+      jobTitle: title, 
       name,
       email,
       address,
@@ -31,13 +32,13 @@ const ContactForm = () => {
       <Text style={styles.title}>Apply for {title}</Text>
       <TextInput
         style={styles.input}
-        placeholder="Name"
+        placeholder="Prenom et Nom"
         value={name}
         onChangeText={setName}
       />
       <TextInput
         style={styles.input}
-        placeholder="Email"
+        placeholder="courriel"
         value={email}
         onChangeText={setEmail}
       />
@@ -49,24 +50,35 @@ const ContactForm = () => {
       />
       <TextInput
         style={styles.input}
-        placeholder="Phone Number"
+        placeholder="Numero de telephone"
         value={phoneNumber}
         onChangeText={setPhoneNumber}
       />
       <TextInput
         style={styles.input}
-        placeholder="Available Hours per Week"
+        placeholder="Heures disponibles par semaine"
         value={availableHours}
         onChangeText={setAvailableHours}
         keyboardType="numeric"
       />
-      <Button title="Submit" onPress={handleSubmit} />
+      
+      
+      <View style={styles.buttonContainer}>
+        <Button title="retourner" onPress={() => router.back()} />
+      </View>
+      
+      <View style={styles.buttonContainer}>
+        <Button title="Envoyer" onPress={handleSubmit} />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: 16,
   },
   title: {
@@ -75,11 +87,16 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   input: {
+    width: '100%',
     borderWidth: 1,
     borderColor: '#ccc',
     padding: 8,
     marginVertical: 8,
     borderRadius: 4,
+  },
+  buttonContainer: {
+    width: '100%',
+    marginVertical: 8, // Margen vertical para separar los botones
   },
 });
 

@@ -9,7 +9,7 @@ const JobManagement = () => {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      Alert.alert('Access denied', 'You have to login as an admin to access this page.');
+      Alert.alert('Accès refusé', 'Vous devez vous connecter en tant qu administrateur pour accéder à cette page.');
       router.replace('/(tabs)/explore'); 
     }
   }, [isAuthenticated, router]);
@@ -20,12 +20,12 @@ const JobManagement = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Job Management</Text>
+      <Text style={styles.title}>Gestion des emplois</Text>
       <View style={styles.buttonContainer}>
-        <Button title="Add Job" onPress={() => router.push('/components/AddJob')} />
+        <Button title="Ajouter un emploi" onPress={() => router.push('/components/AddJob')} />
       </View>
       <View style={styles.buttonContainer}>
-        <Button title="Delete Job" onPress={() => router.push('/components/deletejob')} />
+        <Button title="Supprimer un emploi" onPress={() => router.push('/components/deletejob')} />
       </View>
     </View>
   );
@@ -36,19 +36,19 @@ export default JobManagement;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center', // Centrar verticalmente
-    alignItems: 'center', // Centrar horizontalmente
-    backgroundColor: '#fff', // Fondo blanco como pediste
-    padding: 20, // Padding para darle espacio al contenido
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    backgroundColor: '#fff', 
+    padding: 20, 
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20, // Espacio debajo del título
-    color: '#333', // Color del texto
+    marginBottom: 20, 
+    color: '#333', 
   },
   buttonContainer: {
-    marginVertical: 10, // Espacio vertical entre los botones
-    width: '80%', // Ancho del botón para que no ocupe todo el ancho de la pantalla
+    marginVertical: 10, 
+    width: '80%', 
   },
 });
