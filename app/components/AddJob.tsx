@@ -102,58 +102,60 @@ const JobForm = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.label}>Position:</Text>
-      <TextInput style={styles.input} value={position} onChangeText={setPosition} />
+      <View style={styles.innerContainer}>
+        <Text style={styles.label}>Position:</Text>
+        <TextInput style={styles.input} value={position} onChangeText={setPosition} />
 
-      <Text style={styles.label}>Location:</Text>
-      <TextInput style={styles.input} value={location} onChangeText={setLocation} />
+        <Text style={styles.label}>Location:</Text>
+        <TextInput style={styles.input} value={location} onChangeText={setLocation} />
 
-      <Text style={styles.label}>Hours:</Text>
-      <TextInput style={styles.input} value={hours} onChangeText={setHours} />
+        <Text style={styles.label}>Hours:</Text>
+        <TextInput style={styles.input} value={hours} onChangeText={setHours} />
 
-      <Text style={styles.label}>Salary:</Text>
-      <TextInput style={styles.input} value={salary} onChangeText={setSalary} />
+        <Text style={styles.label}>Salary:</Text>
+        <TextInput style={styles.input} value={salary} onChangeText={setSalary} />
 
-      <Text style={styles.label}>Job Type:</Text>
-      <TextInput style={styles.input} value={jobType} onChangeText={setJobType} />
+        <Text style={styles.label}>Job Type:</Text>
+        <TextInput style={styles.input} value={jobType} onChangeText={setJobType} />
 
-      <Text style={styles.label}>Job Description:</Text>
-      <TextInput 
-        style={styles.textArea} 
-        value={jobDescription} 
-        onChangeText={setJobDescription} 
-        multiline 
-        numberOfLines={4} 
-      />
+        <Text style={styles.label}>Job Description:</Text>
+        <TextInput 
+          style={styles.textArea} 
+          value={jobDescription} 
+          onChangeText={setJobDescription} 
+          multiline 
+          numberOfLines={4} 
+        />
 
-      <Text style={styles.label}>Key Responsibilities:</Text>
-      <TextInput 
-        style={styles.textArea} 
-        value={keyResponsibilities} 
-        onChangeText={setKeyResponsibilities} 
-        multiline 
-        numberOfLines={4} 
-      />
+        <Text style={styles.label}>Key Responsibilities:</Text>
+        <TextInput 
+          style={styles.textArea} 
+          value={keyResponsibilities} 
+          onChangeText={setKeyResponsibilities} 
+          multiline 
+          numberOfLines={4} 
+        />
 
-      <Text style={styles.label}>Requirements:</Text>
-      <TextInput 
-        style={styles.textArea} 
-        value={requirements} 
-        onChangeText={setRequirements} 
-        multiline 
-        numberOfLines={4} 
-      />
+        <Text style={styles.label}>Requirements:</Text>
+        <TextInput 
+          style={styles.textArea} 
+          value={requirements} 
+          onChangeText={setRequirements} 
+          multiline 
+          numberOfLines={4} 
+        />
 
-      <Text style={styles.label}>Benefits:</Text>
-      <TextInput 
-        style={styles.textArea} 
-        value={benefits} 
-        onChangeText={setBenefits} 
-        multiline 
-        numberOfLines={4} 
-      />
+        <Text style={styles.label}>Benefits:</Text>
+        <TextInput 
+          style={styles.textArea} 
+          value={benefits} 
+          onChangeText={setBenefits} 
+          multiline 
+          numberOfLines={4} 
+        />
 
-      <Button title={id ? "Update Job" : "Add Job"} onPress={handleSaveJob} />
+        <Button title={id ? "Update Job" : "Add Job"} onPress={handleSaveJob} />
+      </View>
     </ScrollView>
   );
 };

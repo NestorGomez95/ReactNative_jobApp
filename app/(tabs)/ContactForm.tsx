@@ -13,7 +13,7 @@ const ContactForm = () => {
   const [availableHours, setAvailableHours] = useState('');
 
   const handleSubmit = () => {
-    axios.post('http://localhost:3000/jobs/apply', {
+    axios.post('http://10.0.2.2:3000/api/aplications/apply', {
       jobTitle: title, 
       name,
       email,
@@ -23,6 +23,7 @@ const ContactForm = () => {
     }).then(response => {
       alert('Application submitted successfully!');
     }).catch(error => {
+      console.error('Error submitting application:', error);
       alert('Failed to submit application.');
     });
   };
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     width: '100%',
-    marginVertical: 8, // Margen vertical para separar los botones
+    marginVertical: 8, 
   },
 });
 

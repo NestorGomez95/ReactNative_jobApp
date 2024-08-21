@@ -45,7 +45,7 @@ const DeleteJob = () => {
         data={jobs} 
         renderItem={renderJob} 
         keyExtractor={(item) => item._id.toString()}
-        contentContainerStyle={styles.flatListContainer} // Centrar el contenido del FlatList
+        contentContainerStyle={styles.flatListContainer} 
       />
       <Button title="retourner" onPress={() => router.push('/')} />
     </View>
@@ -57,18 +57,18 @@ export default DeleteJob;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center', // Centra verticalmente
-    alignItems: 'center', // Centra horizontalmente
+    justifyContent: 'center', 
+    alignItems: 'center', 
     padding: 16,
     backgroundColor: '#f5f5f5',
   },
   flatListContainer: {
-    alignItems: 'center', // Centrar los items del FlatList
+    alignItems: 'center', 
   },
   jobContainer: {
     marginBottom: 16,
     padding: 16,
-    width: '90%', // Ajusta el ancho de los contenedores de trabajos
+    width: '90%', 
     backgroundColor: '#fff',
     borderRadius: 8,
     shadowColor: '#000',
@@ -76,12 +76,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
-    alignItems: 'center', // Centrar el contenido del contenedor de trabajos
+    alignItems: 'center',
   },
   jobText: {
     fontSize: 18,
     marginBottom: 8,
     color: '#333',
-    textAlign: 'center', // Centrar el texto
+    textAlign: 'center', 
   },
 });

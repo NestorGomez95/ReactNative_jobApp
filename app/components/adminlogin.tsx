@@ -13,7 +13,7 @@ const AdminLogin = () => {
     try {
       await signIn(email, password);
       setVisible(false);
-      // Aquí puedes manejar la navegación o cualquier otra acción posterior al login
+      
     } catch (error) {
       Alert.alert('Erreur, identifiants incorrects, veuillez réessayer !');
     }

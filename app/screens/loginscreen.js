@@ -1,4 +1,4 @@
-// LoginScreen.js
+
 import React, { useState } from 'react';
 import { View, TextInput, Button, Text, StyleSheet } from 'react-native';
 import { signIn } from '../services/authservice';
@@ -11,7 +11,7 @@ const LoginScreen = () => {
   const handleLogin = async () => {
     try {
       await signIn(email, password);
-      // Redirigir al usuario a la pantalla principal o a la pantalla de administración
+      
     } catch (error) {
       setErrorMessage('Failed to sign in. Please check your credentials and try again.');
     }

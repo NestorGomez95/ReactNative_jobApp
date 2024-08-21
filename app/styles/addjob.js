@@ -2,8 +2,13 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1, 
     padding: 20,
     backgroundColor: '#fff',
+  },
+  innerContainer: {
+    flexGrow: 1, 
+    paddingBottom: 20, 
   },
   label: {
     fontSize: 16,

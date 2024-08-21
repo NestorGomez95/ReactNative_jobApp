@@ -10,4 +10,4 @@ const JobApplicationSchema = new mongoose.Schema({
   
 });
 
-module.exports = mongoose.model('JobApplication', JobApplicationSchema);
+module.exports = mongoose.model('JobApplication', JobApplicationSchema, 'aplications');

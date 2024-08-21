@@ -8,7 +8,7 @@ const HomeScreen = () => {
   const router = useRouter();
 
   const handleNavigateToJobManagement = () => {
-    // Asegúrate de que la ruta sea correcta
+   
     router.push('/JobManagement'); 
   };
 

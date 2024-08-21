@@ -2,7 +2,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const jobRoutes = require('./Routes/JobRoutes'); // Asegúrate de que la ruta sea correcta
+const jobRoutes = require('./Routes/JobRoutes'); // Rutas para empleos
+const aplicationRoutes = require('./Routes/applicationRoutes'); // Rutas para aplicaciones
 const cors = require('cors');
 
 dotenv.config();
@@ -15,6 +16,7 @@ app.use(cors());
 
 // Rutas
 app.use('/api/jobs', jobRoutes);
+app.use('/api/aplications', aplicationRoutes);
 
 // Conectar a MongoDB
 mongoose.connect(process.env.MONGO_URI, {

@@ -1,6 +1,6 @@
 const Job = require('../models/Job');
+const JobApplication = require('../models/Jobapplication');
 
-// Agregar un nuevo empleo
 exports.AddJob = async (req, res) => {
   const {
     position,
@@ -15,7 +15,7 @@ exports.AddJob = async (req, res) => {
   } = req.body;
 
   try {
-    // Convertir arrays en strings
+    
     const newJob = new Job({
       position,
       location,
@@ -36,7 +36,7 @@ exports.AddJob = async (req, res) => {
   }
 };
 
-// Eliminar un empleo
+
 exports.deletejob = async (req, res) => {
   const { id } = req.params;
   try {
@@ -48,7 +48,7 @@ exports.deletejob = async (req, res) => {
   }
 };
 
-// Obtener todos los empleos
+
 exports.getAllJobs = async (req, res) => {
   try {
     const jobs = await Job.find();
@@ -56,5 +56,29 @@ exports.getAllJobs = async (req, res) => {
   } catch (error) {
     console.error('Error fetching jobs:', error);
     res.status(500).json({ message: 'Error fetching jobs', error: error.message });
+  }
+};
+
+
+exports.applyForJob = async (req, res) => {
+  const { jobTitle, name, email, address, phoneNumber, availableHours } = req.body;
+
+  try {
+    
+    const newApplication = new JobApplication({
+      jobTitle,
+      name,
+      email,
+      address,
+      phoneNumber,
+      availableHours,
+    });
+
+    await newApplication.save();
+    
+    res.status(200).json({ message: 'Application submitted successfully!' });
+  } catch (error) {
+    console.error('Error submitting application:', error);
+    res.status(500).json({ message: 'Failed to submit application.', error: error.message });
   }
 };

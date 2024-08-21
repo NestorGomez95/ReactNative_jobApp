@@ -1,5 +1,5 @@
-// controllers/applicationController.js
-const JobApplication = require('./models/JobApplication'); // Importa el modelo
+
+const JobApplication = require('./models/JobApplication'); 
 
 exports.applyForJob = async (req, res) => {
   try {
